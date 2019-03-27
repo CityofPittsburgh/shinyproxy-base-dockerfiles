@@ -69,3 +69,5 @@ RUN apt-get update && apt-get install -y \
 
 # install dependencies of most BurghsEyeView apps
 RUN R -e "install.packages(c('shinythemes', 'jsonlite', 'R4CouchDB', 'leaflet.extras',  'lubridate', 'stringi'), repos='https://cloud.r-project.org/')"
+
+RUN R -e "devtools::install_github('CityofPittsburgh/caRtegraph')"
