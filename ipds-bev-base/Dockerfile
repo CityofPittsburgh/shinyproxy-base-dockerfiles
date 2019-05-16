@@ -47,11 +47,6 @@ RUN add-apt-repository -y ppa:opencpu/jq
 RUN apt-get update
 RUN apt-get install -y libjq-dev
 
-RUN Rscript -e 'install.packages(c("sf", "lwgeom", "covr", "raster"), dependencies = TRUE, repos = "https://cloud.r-project.org")'
-RUN git clone   https://github.com/r-spatial/sf.git
-RUN R CMD build --no-build-vignettes sf
-RUN R CMD INSTALL sf_*tar.gz
-
 # Prep to install geos
 RUN apt-get install -y software-properties-common python-software-properties
 
@@ -68,6 +63,6 @@ RUN apt-get update && apt-get install -y \
     protobuf-compiler
 
 # install dependencies of most BurghsEyeView apps
-RUN R -e "install.packages(c('shinythemes', 'jsonlite', 'R4CouchDB', 'leaflet.extras',  'lubridate', 'stringi', 'devtools'), repos='https://cloud.r-project.org/')"
+RUN R -e "install.packages(c('shinythemes', 'jsonlite', 'R4CouchDB', 'leaflet.extras',  'lubridate', 'stringi', 'devtools', 'postGIStools', 'sf', 'lwgeom', 'raster'), repos='http://lib.stat.cmu.edu/R/CRAN/')"
 
 RUN R -e "devtools::install_github('CityofPittsburgh/caRtegraph')"
