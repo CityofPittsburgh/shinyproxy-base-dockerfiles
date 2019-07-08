@@ -63,6 +63,6 @@ RUN apt-get update && apt-get install -y \
     protobuf-compiler
 
 # install dependencies of most BurghsEyeView apps
-RUN R -e "install.packages(c('shinythemes', 'jsonlite', 'R4CouchDB', 'leaflet.extras',  'lubridate', 'stringi', 'devtools', 'postGIStools', 'sf', 'lwgeom', 'raster'), repos='http://lib.stat.cmu.edu/R/CRAN/')"
+RUN R -e "install.packages(c('shinythemes', 'jsonlite', 'R4CouchDB', 'leaflet.extras',  'lubridate', 'stringi', 'devtools', 'postGIStools', 'sf', 'lwgeom', 'raster'), repos='https://cloud.r-project.org/')"
 
 RUN R -e "devtools::install_github('CityofPittsburgh/caRtegraph')"
