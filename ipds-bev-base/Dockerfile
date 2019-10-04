@@ -1,4 +1,4 @@
-FROM ipds/shiny-base
+FROM cityofpittsburgh/ipds-shiny-base:1.0
 
 MAINTAINER Geoffrey Arnold "geoffrey.arnold@pittsburghpa.gov"
 
@@ -7,7 +7,7 @@ RUN apt-get update \
   && apt-get install -y --no-install-recommends \
 	lbzip2 \
 	libfftw3-dev \
-	libgdal1-dev \
+	# libgdal1-dev \
 	libgeos-c1v5 \
 	libgsl0-dev \
 	libgl1-mesa-dev \
@@ -63,6 +63,6 @@ RUN apt-get update && apt-get install -y \
     protobuf-compiler
 
 # install dependencies of most BurghsEyeView apps
-RUN R -e "install.packages(c('shinythemes', 'jsonlite', 'R4CouchDB', 'leaflet.extras',  'lubridate', 'stringi', 'devtools', 'postGIStools', 'sf', 'lwgeom', 'raster'), repos='https://cloud.r-project.org/')"
+RUN R -e "install.packages(c('shinythemes', 'jsonlite', 'leaflet.extras',  'lubridate', 'stringi', 'devtools', 'postGIStools', 'sf', 'lwgeom', 'raster'), repos='https://cloud.r-project.org/')"
 
 RUN R -e "devtools::install_github('CityofPittsburgh/caRtegraph')"
