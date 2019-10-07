@@ -5,64 +5,32 @@ MAINTAINER Geoffrey Arnold "geoffrey.arnold@pittsburghpa.gov"
 # system libraries for Burghs Eye View
 RUN apt-get update \
   && apt-get install -y --no-install-recommends \
-	lbzip2 \
-	libfftw3-dev \
-	# libgdal1-dev \
-	libgeos-c1v5 \
-	libgsl0-dev \
-	libgl1-mesa-dev \
-	libglu1-mesa-dev \
-	libhdf4-alt-dev \
-	libhdf5-dev \
-	libnetcdf-dev \
-	libsqlite3-dev \
- 	tk-dev
-
-RUN apt-get update && apt-get install -y software-properties-common
-RUN add-apt-repository ppa:ubuntugis/ubuntugis-unstable
-
-RUN echo "deb http://cran.rstudio.com/bin/linux/ubuntu xenial/  " >> /etc/apt/sources.list
-RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E084DAB9
-
-RUN apt-get update
-RUN apt-get upgrade -y
-
-RUN export DEBIAN_FRONTEND=noninteractive; apt-get -y update \
- && apt-get install -y \
-	libcurl4-openssl-dev \
-	qpdf \
-	wget \
-	git \
-	make \
-	libgdal-dev \
-	libgeos-dev \
-	libproj-dev \
-	liblwgeom-dev \
-	libudunits2-dev \
-	postgis
-
-# stuff for the tmaptools/rmapshaper/geojsonio etc stack:
-RUN apt-get install -y libv8-3.14-dev libprotobuf-dev protobuf-compiler libcairo2-dev
-RUN add-apt-repository -y ppa:opencpu/jq
-RUN apt-get update
-RUN apt-get install -y libjq-dev
-
-# Prep to install geos
-RUN apt-get install -y software-properties-common python-software-properties
-
-RUN add-apt-repository -y ppa:opencpu/jq && \
-    apt-get update && \
-    apt-get install -y \
-        libjq-dev
-
-# system library dependency for the BurghsEyeView app
-RUN apt-get update && apt-get install -y \
-    binutils \
+    lbzip2 \
+    libfftw3-dev \
+    libgdal-dev \
+    libgeos-dev \
+    libgsl0-dev \
+    libgl1-mesa-dev \
+    libglu1-mesa-dev \
+    libhdf4-alt-dev \
+    libhdf5-dev \
+    libjq-dev \
+    liblwgeom-dev \
+    libpq-dev \
+    libproj-dev \
     libprotobuf-dev \
-    libv8-3.14-dev \
-    protobuf-compiler
+    libnetcdf-dev \
+    libsqlite3-dev \
+    libssl-dev \
+    libudunits2-dev \
+    netcdf-bin \
+    postgis \
+    protobuf-compiler \
+    sqlite3 \
+    tk-dev \
+    unixodbc-dev
 
 # install dependencies of most BurghsEyeView apps
-RUN R -e "install.packages(c('shinythemes', 'jsonlite', 'leaflet.extras',  'lubridate', 'stringi', 'devtools', 'postGIStools', 'sf', 'lwgeom', 'raster'), repos='https://cloud.r-project.org/')"
+RUN R -e "install.packages(c('shinythemes', 'jsonlite', 'leaflet.extras', 'lubridate', 'stringi', 'devtools', 'postGIStools', 'sf', 'lwgeom', 'raster'), repos='https://cloud.r-project.org/')"
 
 RUN R -e "devtools::install_github('CityofPittsburgh/caRtegraph')"
