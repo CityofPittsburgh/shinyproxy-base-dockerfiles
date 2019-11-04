@@ -1,4 +1,4 @@
-FROM cron
+FROM gcr.io/data-rivers/pgh-cron-base
 
 MAINTAINER Geoffrey Arnold "geoffrey.arnold@pittsburghpa.gov"
 
@@ -6,14 +6,14 @@ MAINTAINER Geoffrey Arnold "geoffrey.arnold@pittsburghpa.gov"
 RUN apt-get update && apt-get install -y \
     openjdk-8-jdk
 
-# Install 
+# Install
 RUN R -e "install.packages('rJava', repos='https://cloud.r-project.org/')"
 
 # Configure Java
 RUN R CMD javareconf
 
 # Install RJDBC
-RUN R -e "install.packages(c('RJDBC'), repos='https://cloud.r-project.org/')"
+RUN R -e "install.packages(c('RJDBC', 'googleCloudStorageR', 'googleAuthR'), repos='https://cloud.r-project.org/')"
 
 # Copy of java connector driver
 COPY ojdbc6.jar /lib/ojdbc6.jar

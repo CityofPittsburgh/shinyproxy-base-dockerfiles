@@ -43,6 +43,6 @@ RUN /opt/mysql-connector-odbc-5.3.9-linux-ubuntu17.04-x86-64bit/bin/myodbc-insta
 COPY etc_odbcinst.ini /etc/odbcinst.ini
 
 # install dependencies of most cron jobs
-RUN R -e "install.packages(c('odbc', 'DBI', 'RODBC',  'httr', 'jsonlite', 'RCurl', 'readxl', 'zoo', 'lubridate', 'reshape', 'rlang', 'XML', 'devtools', 'tidyverse', 'httr', 'jsonlite', 'geojsonio', 'dotenv', 'RPostgreSQL'), repos='https://cloud.r-project.org/')"
+RUN R -e "install.packages(c('googleCloudStorageR', 'googleAuthR', 'bigquery', 'odbc', 'DBI', 'RODBC',  'httr', 'jsonlite', 'RCurl', 'readxl', 'zoo', 'lubridate', 'reshape', 'rlang', 'XML', 'devtools', 'tidyverse', 'httr', 'jsonlite', 'geojsonio', 'dotenv', 'RPostgreSQL'), repos='https://cloud.r-project.org/')"
 
 RUN R -e "devtools::install_github('CityofPittsburgh/caRtegraph')"

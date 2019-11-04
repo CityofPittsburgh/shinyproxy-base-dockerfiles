@@ -47,7 +47,7 @@ RUN /opt/mysql-connector-odbc-5.3.9-linux-ubuntu17.04-x86-64bit/bin/myodbc-insta
 COPY etc_odbcinst.ini /etc/odbcinst.ini
 
 # install dependencies of most Database Connection apps
-RUN R -e "install.packages(c('shiny', 'rmarkdown', 'odbc', 'DBI', 'RODBC', 'shinythemes', 'httr', 'jsonlite', 'R4CouchDB', 'DT', 'RCurl', 'readxl', 'plotly', 'DT', 'shinydashboard', 'tidyverse', 'plotly', 'scales', 'DT', 'zoo', 'lubridate', 'reshape', 'flexdashboard', 'rlang', 'RPostgreSQL', 'pool'), repos='https://cloud.r-project.org/')"
+RUN R -e "install.packages(c('shiny', 'googleCloudStorageR', 'googleAuthR', 'bigquery', 'rmarkdown', 'odbc', 'DBI', 'RODBC', 'shinythemes', 'httr', 'jsonlite', 'R4CouchDB', 'DT', 'RCurl', 'readxl', 'plotly', 'DT', 'shinydashboard', 'tidyverse', 'plotly', 'scales', 'DT', 'zoo', 'lubridate', 'reshape', 'flexdashboard', 'rlang', 'RPostgreSQL', 'pool'), repos='https://cloud.r-project.org/')"
 
 # Copy Rprofile
 COPY Rprofile.site /usr/lib/R/etc/

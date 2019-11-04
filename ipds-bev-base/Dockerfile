@@ -31,6 +31,6 @@ RUN apt-get update \
     unixodbc-dev
 
 # install dependencies of most BurghsEyeView apps
-RUN R -e "install.packages(c('shinythemes', 'jsonlite', 'leaflet.extras', 'lubridate', 'stringi', 'devtools', 'postGIStools', 'sf', 'lwgeom', 'raster'), repos='https://cloud.r-project.org/')"
+RUN R -e "install.packages(c('shinythemes', 'googleCloudStorageR', 'googleAuthR', 'bigquery', 'jsonlite', 'leaflet.extras', 'lubridate', 'stringi', 'devtools', 'postGIStools', 'sf', 'lwgeom', 'raster'), repos='https://cloud.r-project.org/')"
 
 RUN R -e "devtools::install_github('CityofPittsburgh/caRtegraph')"
